@@ -1,0 +1,38 @@
+name: Build extension ZIP
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Read version from manifest
+        id: manifest
+        run: echo "version=$(jq -r .version manifest.json)" >> "$GITHUB_OUTPUT"
+
+      - name: Build ZIP (extension files only)
+        run: |
+          zip -r "youtube-hidden-shorts-${{ steps.manifest.outputs.version }}.zip" \
+            manifest.json \
+            content.js \
+            hide-shorts.css \
+            icons
+
+      - name: Show ZIP contents
+        run: unzip -l "youtube-hidden-shorts-${{ steps.manifest.outputs.version }}.zip"
+
+      - name: Attach ZIP to release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload "${{ github.event.release.tag_name }}" \
+            "youtube-hidden-shorts-${{ steps.manifest.outputs.version }}.zip" \
+            --clobber
