@@ -1,0 +1,35 @@
+/* Hide Shorts everywhere. Always active — disable the extension to turn off. */
+
+/* Shorts shelf in home/subscriptions feed */
+ytd-rich-shelf-renderer[is-shorts],
+ytd-reel-shelf-renderer,
+
+/* Shorts shelf in search results */
+ytd-search ytd-reel-shelf-renderer,
+grid-shelf-view-model,
+
+/* Individual shorts video in search results */
+ytd-video-renderer:has(a[href^="/shorts/"]),
+ytd-grid-video-renderer:has(a[href^="/shorts/"]),
+
+/* Rich grid items pointing to shorts (home feed) */
+ytd-rich-item-renderer:has(a[href^="/shorts/"]),
+
+/* Sidebar / guide "Shorts" entry (full + mini sidebar) */
+ytd-guide-entry-renderer:has(a[title="Shorts"]),
+ytd-guide-entry-renderer:has(a[href="/shorts/"]),
+ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
+ytd-mini-guide-entry-renderer:has(a[href="/shorts/"]),
+
+/* Channel page Shorts tab */
+yt-tab-shape[tab-title="Shorts"],
+tp-yt-paper-tab:has(> .tab-content[title="Shorts"]),
+
+/* Shorts pivot bar item (mobile-ish layouts) */
+ytd-pivot-bar-item-renderer:has(a[href="/shorts"]),
+
+/* Endpoint links to shorts in chips/lockups */
+ytm-shorts-lockup-view-model,
+ytm-shorts-lockup-view-model-v2 {
+  display: none !important;
+}
