@@ -1,5 +1,7 @@
 # YouTube Hidden Shorts
 
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-FFDD00?style=flat-square&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/jeffersongoncalves)
+
 ![YouTube Hidden Shorts](banners/youtube-hidden-shorts.png)
 
 A minimal Chrome extension (Manifest V3) that hides **YouTube Shorts** everywhere: home feed, search results, sidebar, channel pages, and lockups. Opening a Short URL redirects to the normal video player.
